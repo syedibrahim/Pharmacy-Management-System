@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="dist/lib/AbsoluteLayout.jar"/>
+	<classpathentry kind="lib" path="dist/lib/JTattoo-1.6.11.jar"/>
+	<classpathentry kind="lib" path="dist/lib/mysql-connector-java-5.1.40-bin.jar"/>
+	<classpathentry kind="lib" path="dist/lib/rs2xml.jar"/>
+	<classpathentry kind="lib" path="dist/Pharmacy.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
