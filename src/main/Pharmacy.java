@@ -13,24 +13,26 @@ import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 
 public class Pharmacy extends javax.swing.JFrame {
-Connection con = null;
-PreparedStatement pre= null;
-ResultSet res = null;
-static int ex;
-User user ;
-Company comp;
-static Drug drug ;
-static Move_Drug move_drug;
-Buy_Drug buy;
-Date d;
-SimpleDateFormat dd;
-static String to;
-static String from ;
-static String text ;
-static String almost_expired_bar ; 
-static String expired_bar ;
+    Connection con = null;
+    PreparedStatement pre= null;
+    ResultSet res = null;
+    static int ex;
+    User user ;
+    Company comp;
+    static Drug drug ;
+    static Move_Drug move_drug;
+    Buy_Drug buy;
+    Date d;
+    SimpleDateFormat dd;
+    static String to;
+    static String from ;
+    static String text ;
+    static String almost_expired_bar ;
+    static String expired_bar ;
+    
+    
     public Pharmacy() {
-    	setIconImage(Toolkit.getDefaultToolkit().getImage(Pharmacy.class.getResource("/img/Untitled.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(Pharmacy.class.getResource("/img/Untitled.png")));
         initComponents();
         con=Connect.connect();
         showDate();
@@ -44,8 +46,8 @@ static String expired_bar ;
         warning();
         login_as();
         alert_message();
-     }
-
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -69,6 +71,11 @@ static String expired_bar ;
         username1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        msgAlertDialog = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        btnShowMsg = new javax.swing.JButton();
+        btnCancle = new javax.swing.JButton();
         userB = new javax.swing.JButton();
         drugs = new javax.swing.JButton();
         adduser = new javax.swing.JButton();
@@ -115,35 +122,33 @@ static String expired_bar ;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pharmacy Management");
+        setPreferredSize(new java.awt.Dimension(1220, 607));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(null);
 
-        jPanel2.setBackground(new java.awt.Color(0,50, 100));
+        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 26)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Pharmacy Management");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255,255, 255));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Time");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255,255));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Today");
 
         time.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        time.setForeground(new java.awt.Color(0, 200, 200));
+        time.setForeground(new java.awt.Color(0, 0, 102));
         time.setText("00:00:00");
 
         today.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        today.setForeground(new java.awt.Color(255, 0, 0));
+        today.setForeground(new java.awt.Color(153, 0, 0));
         today.setText("00-00-0000");
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setIcon(new ImageIcon(Pharmacy.class.getResource("/img/Apps-session-logout-icon.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/Apps-session-logout-icon.png"))); // NOI18N
         jButton1.setToolTipText("Logout");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -154,24 +159,22 @@ static String expired_bar ;
 
         username.setBackground(new java.awt.Color(255, 255, 255));
         username.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        username.setForeground(new java.awt.Color(255, 0, 0));
+        username.setForeground(new java.awt.Color(153, 0, 0));
         username.setText("Login As : ");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255,255));
         jLabel5.setText("Login As : ");
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255,255));
         jLabel11.setText("User Name : ");
 
         username1.setBackground(new java.awt.Color(255, 255, 255));
         username1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        username1.setForeground(new java.awt.Color(0, 255, 255));
+        username1.setForeground(new java.awt.Color(0, 0, 102));
         username1.setText("Login As : ");
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setIcon(new ImageIcon(Pharmacy.class.getResource("/img/2572420.postal.envelope.icon.dark.blue.isolated.on.black.background (1).jpg"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/2572420.postal.envelope.icon.dark.blue.isolated.on.black.background (1).jpg"))); // NOI18N
         jButton2.setToolTipText("Public Inbox");
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -261,6 +264,67 @@ static String expired_bar ;
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 1220, 80);
 
+        msgAlertDialog.setBackground(new java.awt.Color(0, 255, 0));
+
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+
+        jLabel12.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("You have new Message(s)");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        btnShowMsg.setText("Show Message");
+        btnShowMsg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowMsgActionPerformed(evt);
+            }
+        });
+
+        btnCancle.setText("Cancel");
+
+        javax.swing.GroupLayout msgAlertDialogLayout = new javax.swing.GroupLayout(msgAlertDialog);
+        msgAlertDialog.setLayout(msgAlertDialogLayout);
+        msgAlertDialogLayout.setHorizontalGroup(
+            msgAlertDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(msgAlertDialogLayout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(btnShowMsg)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(btnCancle, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        msgAlertDialogLayout.setVerticalGroup(
+            msgAlertDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, msgAlertDialogLayout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(msgAlertDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnShowMsg)
+                    .addComponent(btnCancle))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(msgAlertDialog);
+        msgAlertDialog.setBounds(810, 480, 410, 110);
+
         userB.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         userB.setForeground(new java.awt.Color(0, 51, 51));
         userB.setText("User");
@@ -291,7 +355,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(adduser);
-        adduser.setBounds(1050, 150, 140, 23);
+        adduser.setBounds(1050, 150, 140, 31);
 
         deleteuser.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         deleteuser.setText("Delete User");
@@ -301,7 +365,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(deleteuser);
-        deleteuser.setBounds(1050, 190, 140, 23);
+        deleteuser.setBounds(1050, 190, 140, 31);
 
         updateuser.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         updateuser.setText("Update User");
@@ -311,7 +375,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(updateuser);
-        updateuser.setBounds(1050, 230, 140, 23);
+        updateuser.setBounds(1050, 230, 140, 31);
 
         adddrug.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         adddrug.setText("Add Drug");
@@ -321,7 +385,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(adddrug);
-        adddrug.setBounds(860, 150, 150, 23);
+        adddrug.setBounds(860, 150, 150, 31);
 
         deletedrug.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         deletedrug.setText("Delete Drug");
@@ -331,7 +395,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(deletedrug);
-        deletedrug.setBounds(860, 190, 150, 23);
+        deletedrug.setBounds(860, 190, 150, 31);
 
         updatedrug.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         updatedrug.setText("Update Drug");
@@ -341,7 +405,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(updatedrug);
-        updatedrug.setBounds(860, 230, 150, 23);
+        updatedrug.setBounds(860, 230, 150, 31);
 
         searchdrug.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         searchdrug.setText("Search Drug");
@@ -351,7 +415,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(searchdrug);
-        searchdrug.setBounds(860, 270, 150, 23);
+        searchdrug.setBounds(860, 270, 150, 31);
 
         drugdetails.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         drugdetails.setForeground(new java.awt.Color(0, 51, 51));
@@ -372,7 +436,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(newcom);
-        newcom.setBounds(188, 154, 118, 23);
+        newcom.setBounds(188, 154, 118, 31);
 
         endwith.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         endwith.setText("End With");
@@ -382,7 +446,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(endwith);
-        endwith.setBounds(188, 195, 118, 23);
+        endwith.setBounds(188, 195, 118, 31);
 
         update.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         update.setText("Updates");
@@ -392,7 +456,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(update);
-        update.setBounds(188, 236, 119, 23);
+        update.setBounds(188, 236, 119, 31);
 
         movedrug.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         movedrug.setText("Drugs_List");
@@ -402,7 +466,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(movedrug);
-        movedrug.setBounds(860, 350, 150, 23);
+        movedrug.setBounds(860, 350, 150, 31);
 
         setting.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         setting.setForeground(new java.awt.Color(0, 51, 51));
@@ -423,7 +487,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(logindetails);
-        logindetails.setBounds(10, 154, 141, 23);
+        logindetails.setBounds(10, 154, 141, 31);
 
         changepass.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         changepass.setText("Change Password");
@@ -433,7 +497,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(changepass);
-        changepass.setBounds(10, 195, 141, 23);
+        changepass.setBounds(10, 195, 158, 31);
 
         company.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         company.setForeground(new java.awt.Color(0, 51, 51));
@@ -454,7 +518,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(editprice);
-        editprice.setBounds(670, 190, 150, 23);
+        editprice.setBounds(670, 190, 150, 31);
 
         purchase.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         purchase.setForeground(new java.awt.Color(0, 51, 51));
@@ -475,7 +539,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(renew_validate);
-        renew_validate.setBounds(670, 270, 150, 23);
+        renew_validate.setBounds(670, 270, 150, 31);
 
         buydrug.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         buydrug.setText("Buy Drugs");
@@ -485,7 +549,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(buydrug);
-        buydrug.setBounds(520, 150, 130, 23);
+        buydrug.setBounds(520, 150, 130, 31);
 
         updatedeals.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         updatedeals.setText("Update Deals");
@@ -495,7 +559,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(updatedeals);
-        updatedeals.setBounds(520, 190, 130, 23);
+        updatedeals.setBounds(520, 190, 130, 31);
 
         alldeals.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         alldeals.setText("All Deals");
@@ -505,7 +569,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(alldeals);
-        alldeals.setBounds(520, 230, 130, 23);
+        alldeals.setBounds(520, 230, 130, 31);
 
         sales.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         sales.setForeground(new java.awt.Color(0, 51, 51));
@@ -526,7 +590,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(salesbill);
-        salesbill.setBounds(338, 154, 150, 23);
+        salesbill.setBounds(338, 154, 150, 31);
 
         logout.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         logout.setText("Logout");
@@ -536,7 +600,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(logout);
-        logout.setBounds(10, 236, 141, 23);
+        logout.setBounds(10, 236, 141, 31);
 
         shiftsales.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         shiftsales.setText("Shift Sales");
@@ -546,7 +610,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(shiftsales);
-        shiftsales.setBounds(338, 195, 150, 23);
+        shiftsales.setBounds(338, 195, 150, 31);
 
         checkplace.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         checkplace.setText("Check Places");
@@ -556,7 +620,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(checkplace);
-        checkplace.setBounds(670, 150, 150, 23);
+        checkplace.setBounds(670, 150, 150, 31);
 
         druglist.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         druglist.setText("Drugs_List");
@@ -566,7 +630,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(druglist);
-        druglist.setBounds(0, 0, 93, 23);
+        druglist.setBounds(0, 0, 96, 30);
 
         movedrug1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         movedrug1.setText("Move Drug");
@@ -576,36 +640,32 @@ static String expired_bar ;
             }
         });
         jPanel1.add(movedrug1);
-        movedrug1.setBounds(860, 310, 150, 23);
+        movedrug1.setBounds(860, 310, 150, 31);
 
-        jLabel6.setIcon(new ImageIcon(Pharmacy.class.getResource("/img/rsz_1rsz_16314569-telephone-round-gray-web-icon-on-black-background-stock-photo-phone.jpg"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/rsz_1rsz_16314569-telephone-round-gray-web-icon-on-black-background-stock-photo-phone.jpg"))); // NOI18N
         jLabel6.setText("jLabel6");
         jPanel1.add(jLabel6);
         jLabel6.setBounds(0, 450, 80, 80);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel7.setText("080-7559205");
+        jLabel7.setText("045/3397825");
         jPanel1.add(jLabel7);
         jLabel7.setBounds(90, 490, 390, 29);
-        jLabel7.setForeground(new java.awt.Color(0, 0,255));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel8.setText("7080901000 / 9845631278");
+        jLabel8.setText("01128284736 / 01014033489");
         jPanel1.add(jLabel8);
         jLabel8.setBounds(90, 450, 390, 29);
-        jLabel8.setForeground(new java.awt.Color(0, 0,255));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel9.setText("Jayanagar Bangalore India");
+        jLabel9.setText("Alexandria / Elraml Station / st-Elshazly");
         jPanel1.add(jLabel9);
         jLabel9.setBounds(120, 550, 380, 22);
-        jLabel9.setForeground(new java.awt.Color(0, 0,255));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel10.setText("Location : ");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(10, 550, 94, 22);
-        jLabel10.setForeground(new java.awt.Color(0, 0,255));
+        jLabel10.setBounds(10, 550, 105, 22);
 
         expired1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         expired1.setText("Expired Drugs");
@@ -615,7 +675,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(expired1);
-        expired1.setBounds(670, 230, 150, 23);
+        expired1.setBounds(670, 230, 150, 31);
 
         almost.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         almost.setText("Almost_Finished");
@@ -625,7 +685,7 @@ static String expired_bar ;
             }
         });
         jPanel1.add(almost);
-        almost.setBounds(670, 310, 150, 23);
+        almost.setBounds(670, 310, 150, 31);
 
         retdrug.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         retdrug.setText("Retrieval Drug");
@@ -635,11 +695,11 @@ static String expired_bar ;
             }
         });
         jPanel1.add(retdrug);
-        retdrug.setBounds(338, 235, 150, 23);
+        retdrug.setBounds(338, 235, 150, 31);
 
-        jLabel13.setIcon(new ImageIcon(Pharmacy.class.getResource("/img/capsule.pill.health.medicine (1).jpg"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/capsule.pill.health.medicine (1).jpg"))); // NOI18N
         jPanel1.add(jLabel13);
-        jLabel13.setBounds(0, 74, 1210, 520);
+        jLabel13.setBounds(0, 74, 1220, 520);
 
         jMenu1.setText("About Pharmacy");
         jMenuBar1.add(jMenu1);
@@ -653,131 +713,139 @@ static String expired_bar ;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1199, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1221, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(1215, 646));
+        setSize(new java.awt.Dimension(1231, 646));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void movedrug1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_movedrug1ActionPerformed
         new Move_Drug().setVisible(true);
     }//GEN-LAST:event_movedrug1ActionPerformed
-
+    
     private void druglistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_druglistActionPerformed
         new Drug_List().setVisible(true);
     }//GEN-LAST:event_druglistActionPerformed
-
+    
     private void checkplaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkplaceActionPerformed
         new Move_Drug().setVisible(true);
     }//GEN-LAST:event_checkplaceActionPerformed
-
+    
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
         this.dispose();
         new Login().setVisible(true);
     }//GEN-LAST:event_logoutActionPerformed
-
+    
     private void salesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesActionPerformed
         sales();
     }//GEN-LAST:event_salesActionPerformed
-
+    
     private void purchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purchaseActionPerformed
-       if(!username.getText().equals("Employee")){
-           enterpurchase();
-       }else {
-String pass = JOptionPane.showInputDialog("You are not allowed to check user Inforamtion\nTo get in please confirm Admin Password");               
-String sql = "select NAME,PASSWORD from users where NAME='Ebrahem Samer' ";
-    try{
-        pre=con.prepareStatement(sql);
-        res=pre.executeQuery();
-        if(res.next()){
-            if(res.getString("PASSWORD").equals(pass)){
-                enterpurchase();
-            }else if(pass.isEmpty()){
-JOptionPane.showMessageDialog(null,"You must write admin Password","Failed Access",2);
-            }else {
-JOptionPane.showMessageDialog(null,"Wrong Password","Failed Access",2);                
-            }}
-    }catch(Exception e){
-    JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
-    }
-       }
+        if(!username.getText().equals("Employee")){
+            enterpurchase();
+        }else {
+            String pass = JOptionPane.showInputDialog("You are not allowed to check user Inforamtion\nTo get in please confirm Admin Password");
+            String sql = "select NAME,PASSWORD from users where NAME='Ebrahem Samer' ";
+            
+            if (!pass.equals("")) {
+                
+                try{
+                    pre=con.prepareStatement(sql);
+                    res=pre.executeQuery();
+                    if(res.next()){
+                        if(res.getString("PASSWORD").equals(pass)){
+                            enterpurchase();
+                        }else if(pass.isEmpty()){
+                            JOptionPane.showMessageDialog(null,"You must write admin Password","Failed Access",2);
+                        }else {
+                            JOptionPane.showMessageDialog(null,"Wrong Password","Failed Access",2);
+                        }}
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null,"Please type in Admin Password","Failed Access",2);
+                
+            }
+            
+        }
     }//GEN-LAST:event_purchaseActionPerformed
-
+    
     private void editpriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editpriceActionPerformed
         new Edit_Price().setVisible(true);
     }//GEN-LAST:event_editpriceActionPerformed
-
+    
     private void companyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_companyActionPerformed
         company();
     }//GEN-LAST:event_companyActionPerformed
-
+    
     private void changepassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changepassActionPerformed
         new Change_Password().setVisible(true);
     }//GEN-LAST:event_changepassActionPerformed
-
+    
     private void settingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingActionPerformed
         setting();
     }//GEN-LAST:event_settingActionPerformed
-
+    
     private void movedrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_movedrugActionPerformed
         new Drug_List().setVisible(true);
     }//GEN-LAST:event_movedrugActionPerformed
-
+    
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         comp.setVisible(true);
         comp.save.setEnabled(false);
         comp.update.setEnabled(true);
         comp.delete.setEnabled(false);
     }//GEN-LAST:event_updateActionPerformed
-
+    
     private void endwithActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endwithActionPerformed
         comp.setVisible(true);
         comp.save.setEnabled(false);
         comp.update.setEnabled(false);
         comp.delete.setEnabled(true);
     }//GEN-LAST:event_endwithActionPerformed
-
+    
     private void newcomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newcomActionPerformed
         comp.setVisible(true);
         comp.save.setEnabled(true);
         comp.update.setEnabled(false);
         comp.delete.setEnabled(false);
     }//GEN-LAST:event_newcomActionPerformed
-
+    
     private void drugdetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drugdetailsActionPerformed
         enterdrugdetails();
     }//GEN-LAST:event_drugdetailsActionPerformed
-
+    
     private void searchdrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchdrugActionPerformed
         new Search_Drug().setVisible(true);
     }//GEN-LAST:event_searchdrugActionPerformed
-
+    
     private void updatedrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatedrugActionPerformed
         drug.setVisible(true);
         drug.adddrug.setEnabled(false);
         drug.deletedrug.setEnabled(false);
         drug.updatedrug.setEnabled(true);
     }//GEN-LAST:event_updatedrugActionPerformed
-
+    
     private void deletedrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletedrugActionPerformed
         drug.setVisible(true);
         drug.updatedrug.setEnabled(false);
         drug.adddrug.setEnabled(false);
         drug.deletedrug.setEnabled(true);
     }//GEN-LAST:event_deletedrugActionPerformed
-
+    
     private void adddrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adddrugActionPerformed
         drug.setVisible(true);
         drug.updatedrug.setEnabled(false);
         drug.deletedrug.setEnabled(false);
         drug.adddrug.setEnabled(true);
     }//GEN-LAST:event_adddrugActionPerformed
-
+    
     private void updateuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateuserActionPerformed
         user.setVisible(true);
         user.deleteuser.setEnabled(false);
@@ -785,100 +853,115 @@ JOptionPane.showMessageDialog(null,"Wrong Password","Failed Access",2);
         user.updateuser.setEnabled(true);
         user.id.setEditable(false);
     }//GEN-LAST:event_updateuserActionPerformed
-
+    
     private void deleteuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteuserActionPerformed
         user.setVisible(true);
         user.adduser.setEnabled(false);
         user.updateuser.setEnabled(false);
         user.deleteuser.setEnabled(true);
     }//GEN-LAST:event_deleteuserActionPerformed
-
+    
     private void adduserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adduserActionPerformed
         user.setVisible(true);
         user.deleteuser.setEnabled(false);
         user.updateuser.setEnabled(false);
         user.adduser.setEnabled(true);
     }//GEN-LAST:event_adduserActionPerformed
-
+    
     private void drugsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drugsActionPerformed
         enterdrugs();
     }//GEN-LAST:event_drugsActionPerformed
-
+    
     private void userBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userBActionPerformed
-    if(!username.getText().equals("Employee")){
-        enteruser();}else{
-   String pass = JOptionPane.showInputDialog(null,"You are not allowed to check user Inforamtion\nTo get in please confirm Admin Password");    
-    String sql = "select NAME,PASSWORD from users where NAME='Syed Ibrahim' ";
-    try{
-        pre=con.prepareStatement(sql);
-        res=pre.executeQuery();
-        if(res.next()){
-            if(res.getString("PASSWORD").equals(pass)){
-                enteruser();
-            }else if(pass.isEmpty()){
-       JOptionPane.showMessageDialog(null,"You must write admin Password","Failed Access",2);
-          }else {
-    JOptionPane.showMessageDialog(null,"Wrong Password","Failed Access",2);
-            }}
-    }catch(Exception e){
-    JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
-    }
-    }
+        if(!username.getText().equals("Employee")){
+            enteruser();
+        }else{
+            String pass = JOptionPane.showInputDialog(null,"You are not allowed to check user Inforamtion\nTo get in please confirm Admin Password");
+            String sql = "select NAME,PASSWORD from users where NAME='Syed Ibrahim' ";
+            
+            if (!pass.equals("")) {
+                try{
+                pre=con.prepareStatement(sql);
+                res=pre.executeQuery();
+                if(res.next()){
+                    if(res.getString("PASSWORD").equals(pass)){
+                        enteruser();
+                    }else if(pass.isEmpty()){
+                        JOptionPane.showMessageDialog(null,"You must write admin Password","Failed Access",2);
+                    }else {
+                        JOptionPane.showMessageDialog(null,"Wrong Password","Failed Access",2);
+                    }
+                }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
+            }
+            } else {
+                JOptionPane.showMessageDialog(null,"Please type in Admin password","Failed Access",2);
+            }
+            
+            
+        }
     }//GEN-LAST:event_userBActionPerformed
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
         new Login().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     private void renew_validateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_renew_validateActionPerformed
-new Renew_Validity().setVisible(true);
+        new Renew_Validity().setVisible(true);
     }//GEN-LAST:event_renew_validateActionPerformed
-
+    
     private void expired1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expired1ActionPerformed
-    new Expired_Drug().setVisible(true);
+        new Expired_Drug().setVisible(true);
     }//GEN-LAST:event_expired1ActionPerformed
-
+    
     private void logindetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logindetailsActionPerformed
-new Login_Details().setVisible(true);
+        new Login_Details().setVisible(true);
     }//GEN-LAST:event_logindetailsActionPerformed
-
+    
     private void buydrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buydrugActionPerformed
-buy.setVisible(true);
-buy.makedeal.setEnabled(true);
-buy.update.setEnabled(false);
+        buy.setVisible(true);
+        buy.makedeal.setEnabled(true);
+        buy.update.setEnabled(false);
     }//GEN-LAST:event_buydrugActionPerformed
-
+    
     private void updatedealsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatedealsActionPerformed
-buy.setVisible(true);
-buy.update.setEnabled(true);
-buy.makedeal.setEnabled(false);
+        buy.setVisible(true);
+        buy.update.setEnabled(true);
+        buy.makedeal.setEnabled(false);
     }//GEN-LAST:event_updatedealsActionPerformed
-
+    
     private void alldealsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alldealsActionPerformed
-new All_Deal().setVisible(true);
+        new All_Deal().setVisible(true);
     }//GEN-LAST:event_alldealsActionPerformed
-
+    
     private void salesbillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesbillActionPerformed
-new Sales_Bill().setVisible(true);
+        new Sales_Bill().setVisible(true);
     }//GEN-LAST:event_salesbillActionPerformed
-
+    
     private void almostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_almostActionPerformed
-new Almost_Finish().setVisible(true);
+        new Almost_Finish().setVisible(true);
     }//GEN-LAST:event_almostActionPerformed
-
+    
     private void shiftsalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shiftsalesActionPerformed
-new Shift_Sales().setVisible(true);
+        new Shift_Sales().setVisible(true);
     }//GEN-LAST:event_shiftsalesActionPerformed
-
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-new Inbox().setVisible(true);
+        new Inbox().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
     private void retdrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retdrugActionPerformed
-new Retrieval_Drug().setVisible(true);
+        new Retrieval_Drug().setVisible(true);
     }//GEN-LAST:event_retdrugActionPerformed
 
+    private void btnShowMsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowMsgActionPerformed
+        msgAlertDialog.setVisible(false);
+        new Show_Message().setVisible(true);
+        deleteMsg();
+    }//GEN-LAST:event_btnShowMsgActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -886,8 +969,8 @@ new Retrieval_Drug().setVisible(true);
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -905,7 +988,7 @@ new Retrieval_Drug().setVisible(true);
             java.util.logging.Logger.getLogger(Pharmacy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
@@ -914,12 +997,14 @@ new Retrieval_Drug().setVisible(true);
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adddrug;
     private javax.swing.JButton adduser;
     private javax.swing.JButton alldeals;
     private javax.swing.JButton almost;
+    private javax.swing.JButton btnCancle;
+    private javax.swing.JButton btnShowMsg;
     private javax.swing.JButton buydrug;
     private javax.swing.JButton changepass;
     private javax.swing.JButton checkplace;
@@ -937,6 +1022,7 @@ new Retrieval_Drug().setVisible(true);
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -951,10 +1037,12 @@ new Retrieval_Drug().setVisible(true);
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JButton logindetails;
     private javax.swing.JButton logout;
     private javax.swing.JButton movedrug;
     private javax.swing.JButton movedrug1;
+    private javax.swing.JPanel msgAlertDialog;
     private javax.swing.JButton newcom;
     public javax.swing.JButton purchase;
     private javax.swing.JButton renew_validate;
@@ -974,440 +1062,459 @@ new Retrieval_Drug().setVisible(true);
     private javax.swing.JLabel username;
     public static javax.swing.JLabel username1;
     // End of variables declaration//GEN-END:variables
-private void showDate(){
-      d = new Date();
-      dd = new SimpleDateFormat("dd-MM-yyyy");
-      today.setText(dd.format(d));
+    private void showDate(){
+        d = new Date();
+        dd = new SimpleDateFormat("dd-MM-yyyy");
+        today.setText(dd.format(d));
         
         new Timer(0,new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-               Date d = new Date();
-               SimpleDateFormat dd = new SimpleDateFormat("hh:mm:ss a");
-               time.setText(dd.format(d));
+                Date d = new Date();
+                SimpleDateFormat dd = new SimpleDateFormat("hh:mm:ss a");
+                time.setText(dd.format(d));
             }
         }).start();
-}
-private void buttonvis(){
-    adduser.setVisible(false);
-    deleteuser.setVisible(false);
-    updateuser.setVisible(false);
-    
-    adddrug.setVisible(false);
-    deletedrug.setVisible(false);
-    updatedrug.setVisible(false);
-    searchdrug.setVisible(false);
-    movedrug.setVisible(false);
-    movedrug1.setVisible(false);
-    
-    checkplace.setVisible(false);
-    editprice.setVisible(false);
-    renew_validate.setVisible(false);
-    expired1.setVisible(false);
-    almost.setVisible(false);
-    
-    buydrug.setVisible(false);
-    updatedeals.setVisible(false);
-    alldeals.setVisible(false);
-    
-    salesbill.setVisible(false);
-    shiftsales.setVisible(false);
-    retdrug.setVisible(false);
-    
-    newcom.setVisible(false);
-    endwith.setVisible(false);
-    update.setVisible(false);
-    
-    logindetails.setVisible(false);
-    changepass.setVisible(false);
-    logout.setVisible(false);
-}
-private void uservis(){
-    adduser.setVisible(true);
-    deleteuser.setVisible(true);
-    updateuser.setVisible(true);
-    
-}
-private void enteruser(){
-    userB.setEnabled(false);
-    drugs.setEnabled(true);
-    drugdetails.setEnabled(true);
-    sales.setEnabled(true);
-    purchase.setEnabled(true);
-    setting.setEnabled(true);
-    company.setEnabled(true);
-    
-    adduser.setVisible(true);
-    deleteuser.setVisible(true);
-    updateuser.setVisible(true);
-    
-    adddrug.setVisible(false);
-    deletedrug.setVisible(false);
-    updatedrug.setVisible(false);
-    searchdrug.setVisible(false);
-    movedrug.setVisible(false);
-    movedrug1.setVisible(false);
-    
-    editprice.setVisible(false);
-    checkplace.setVisible(false);
-    renew_validate.setVisible(false);
-    expired1.setVisible(false);
-    almost.setVisible(false);
-    
-    buydrug.setVisible(false);
-    updatedeals.setVisible(false);
-    alldeals.setVisible(false);
-    
-    salesbill.setVisible(false);
-    shiftsales.setVisible(false);
-    retdrug.setVisible(false);
-    
-    newcom.setVisible(false);
-    endwith.setVisible(false);
-    update.setVisible(false);
-    
-    logindetails.setVisible(false);
-    changepass.setVisible(false);
-    logout.setVisible(false);
-}
-private void enterdrugs(){
-    drugs.setEnabled(false);
-    userB.setEnabled(true);
-    drugdetails.setEnabled(true);
-    sales.setEnabled(true);
-    purchase.setEnabled(true);
-    setting.setEnabled(true);
-    company.setEnabled(true);
-    
-    adduser.setVisible(false);
-    deleteuser.setVisible(false);
-    updateuser.setVisible(false);
-    
-    adddrug.setVisible(true);
-    deletedrug.setVisible(true);
-    updatedrug.setVisible(true);
-    searchdrug.setVisible(true);
-    movedrug.setVisible(true);
-    movedrug1.setVisible(true);
-    
-    editprice.setVisible(false);
-    checkplace.setVisible(false);
-    renew_validate.setVisible(false);
-    expired1.setVisible(false);
-    almost.setVisible(false);
-    
-    buydrug.setVisible(false);
-    updatedeals.setVisible(false);
-    alldeals.setVisible(false);
-    
-    salesbill.setVisible(false);
-    shiftsales.setVisible(false);
-    retdrug.setVisible(false);
-    
-    newcom.setVisible(false);
-    endwith.setVisible(false);
-    update.setVisible(false);
-    
-    logindetails.setVisible(false);
-    changepass.setVisible(false);
-    logout.setVisible(false);
-}
-private void enterdrugdetails(){
-    drugdetails.setEnabled(false);
-    userB.setEnabled(true);
-    drugs.setEnabled(true);
-    sales.setEnabled(true);
-    purchase.setEnabled(true);
-    setting.setEnabled(true);
-    company.setEnabled(true);
-    
-    adduser.setVisible(false);
-    deleteuser.setVisible(false);
-    updateuser.setVisible(false);
-    
-    adddrug.setVisible(false);
-    deletedrug.setVisible(false);
-    updatedrug.setVisible(false);
-    searchdrug.setVisible(false);
-    movedrug.setVisible(false);
-    movedrug1.setVisible(false);
-    
-    editprice.setVisible(true);
-    checkplace.setVisible(true);
-    renew_validate.setVisible(true);
-    expired1.setVisible(true);
-    almost.setVisible(true);
-    
-    buydrug.setVisible(false);
-    updatedeals.setVisible(false);
-    alldeals.setVisible(false);
-    
-    salesbill.setVisible(false);
-    shiftsales.setVisible(false);
-    retdrug.setVisible(false);
-    
-    newcom.setVisible(false);
-    endwith.setVisible(false);
-    update.setVisible(false);
-    
-    logindetails.setVisible(false);
-    changepass.setVisible(false);
-    logout.setVisible(false);
-}
-private void enterpurchase(){
-    purchase.setEnabled(false);
-    userB.setEnabled(true);
-    drugs.setEnabled(true);
-    drugdetails.setEnabled(true);
-    sales.setEnabled(true);
-    setting.setEnabled(true);
-    company.setEnabled(true);
-    
-    adduser.setVisible(false);
-    deleteuser.setVisible(false);
-    updateuser.setVisible(false);
-    
-    adddrug.setVisible(false);
-    deletedrug.setVisible(false);
-    updatedrug.setVisible(false);
-    searchdrug.setVisible(false);
-    movedrug.setVisible(false);
-    movedrug1.setVisible(false);
-    
-    editprice.setVisible(false);
-    checkplace.setVisible(false);
-    renew_validate.setVisible(false);
-    expired1.setVisible(false);
-    almost.setVisible(false);
-    
-    buydrug.setVisible(true);
-    updatedeals.setVisible(true);
-    alldeals.setVisible(true);
-    
-    salesbill.setVisible(false);
-    shiftsales.setVisible(false);
-    retdrug.setVisible(false);
-    
-    newcom.setVisible(false);
-    endwith.setVisible(false);
-    update.setVisible(false);
-    
-    logindetails.setVisible(false);
-    changepass.setVisible(false);
-    logout.setVisible(false);
-}
-private void sales(){
-    sales.setEnabled(false);
-    userB.setEnabled(true);
-    drugs.setEnabled(true);
-    drugdetails.setEnabled(true);
-    purchase.setEnabled(true);
-    setting.setEnabled(true);
-    company.setEnabled(true);
-    
-    adduser.setVisible(false);
-    deleteuser.setVisible(false);
-    updateuser.setVisible(false);
-    
-    adddrug.setVisible(false);
-    deletedrug.setVisible(false);
-    updatedrug.setVisible(false);
-    searchdrug.setVisible(false);
-    movedrug.setVisible(false);
-    movedrug1.setVisible(false);
-    
-    editprice.setVisible(false);
-    checkplace.setVisible(false);
-    renew_validate.setVisible(false);
-    expired1.setVisible(false);
-    almost.setVisible(false);
-    
-    buydrug.setVisible(false);
-    updatedeals.setVisible(false);
-    alldeals.setVisible(false);
-    
-    salesbill.setVisible(true);
-    shiftsales.setVisible(true);
-    retdrug.setVisible(true);
-    
-    newcom.setVisible(false);
-    endwith.setVisible(false);
-    update.setVisible(false);
-    
-    logindetails.setVisible(false);
-    changepass.setVisible(false);
-    logout.setVisible(false);
-}
-private void setting(){
-    setting.setEnabled(false);
-    userB.setEnabled(true);
-    drugs.setEnabled(true);
-    drugdetails.setEnabled(true);
-    sales.setEnabled(true);
-    purchase.setEnabled(true);
-    company.setEnabled(true);
-    
-    adduser.setVisible(false);
-    deleteuser.setVisible(false);
-    updateuser.setVisible(false);
-    
-    adddrug.setVisible(false);
-    deletedrug.setVisible(false);
-    updatedrug.setVisible(false);
-    searchdrug.setVisible(false);
-    movedrug.setVisible(false);
-    movedrug1.setVisible(false);
-    
-    editprice.setVisible(false);
-    checkplace.setVisible(false);
-    renew_validate.setVisible(false);
-    expired1.setVisible(false);
-    almost.setVisible(false);
-    
-    buydrug.setVisible(false);
-    updatedeals.setVisible(false);
-    alldeals.setVisible(false);
-    
-    salesbill.setVisible(false);
-    shiftsales.setVisible(false);
-    retdrug.setVisible(false);
-    
-    newcom.setVisible(false);
-    endwith.setVisible(false);
-    update.setVisible(false);
-    
-    logindetails.setVisible(true);
-    changepass.setVisible(true);
-    logout.setVisible(true);
-}
-private void company(){
-    company.setEnabled(false);
-    userB.setEnabled(true);
-    drugs.setEnabled(true);
-    drugdetails.setEnabled(true);
-    sales.setEnabled(true);
-    purchase.setEnabled(true);
-    setting.setEnabled(true);
-    
-    adduser.setVisible(false);
-    deleteuser.setVisible(false);
-    updateuser.setVisible(false);
-    
-    adddrug.setVisible(false);
-    deletedrug.setVisible(false);
-    updatedrug.setVisible(false);
-    searchdrug.setVisible(false);
-    movedrug.setVisible(false);
-    movedrug1.setVisible(false);
-    
-    editprice.setVisible(false);
-    checkplace.setVisible(false);
-    renew_validate.setVisible(false);
-    expired1.setVisible(false);
-    almost.setVisible(false);
-    
-    buydrug.setVisible(false);
-    updatedeals.setVisible(false);
-    alldeals.setVisible(false);
-    
-    salesbill.setVisible(false);
-    shiftsales.setVisible(false);
-    retdrug.setVisible(false);
-    
-    newcom.setVisible(true);
-    endwith.setVisible(true);
-    update.setVisible(true);
-    
-    logindetails.setVisible(false);
-    changepass.setVisible(false);
-    logout.setVisible(false);
-}
-private void loginas(){
-    String sql = "select ID,NAME from users where ID='"+Login.id.getText()+"' ";
-    try{
-        pre=con.prepareStatement(sql);
-        res=pre.executeQuery();
-        if(res.next()){
-        username1.setText(res.getString("NAME"));
-        if(res.getString("ID").equals("1")){
-        username.setText("Admin");
-        }else{
-        username.setText("Employee");    
-        }
-        }
-         }catch(Exception e){
-        JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
     }
-}
- private void warning(){
-  //check the Expiration of the drugs;
-       
-       int ex_year ;
-       int current_year ;
-       int ex_month ;
-       int ex_day ;
-       int current_month ;
-       int current_day ;
-       String sql = "select BARCODE,EXPIRATION_DATE from drugs";
-       try{
-           pre=con.prepareStatement(sql);
-           res=pre.executeQuery();
-           while(res.next()){
-               Warning warning = new Warning();
-               ex_year = Integer.parseInt(res.getString("EXPIRATION_DATE").split("-")[2]);
-               ex_month = Integer.parseInt(res.getString("EXPIRATION_DATE").split("-")[1]);
-               ex_day = Integer.parseInt(res.getString("EXPIRATION_DATE").split("-")[0]);
-               current_year = Integer.parseInt(dd.format(d).split("-")[2]); 
-               current_month = Integer.parseInt(dd.format(d).split("-")[1]);
-               current_day = Integer.parseInt(dd.format(d).split("-")[0]);
-               if(ex_year==current_year){
-                if(ex_month-current_month==2){
-                    ex=1;
-                    almost_expired_bar = res.getString("BARCODE");
-                    warning.setVisible(true);
-                }else if(ex_month==current_month){
-                      if(ex_day==current_day){
-                        ex=0;
-                        expired_bar = res.getString("BARCODE");
-                        update_to_expired();
-                        warning.setVisible(true);
-                       }}}
-               
-       }}catch(Exception e){
-           JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
-       }
-   }
- private void update_to_expired(){
-     String sql = "update drugs set EXPIRY='Expired' where BARCODE='"+expired_bar+"' ";
-     try{
-         pre=con.prepareStatement(sql);
-         pre.execute();
+    private void buttonvis(){
+        adduser.setVisible(false);
+        deleteuser.setVisible(false);
+        updateuser.setVisible(false);
+        
+        adddrug.setVisible(false);
+        deletedrug.setVisible(false);
+        updatedrug.setVisible(false);
+        searchdrug.setVisible(false);
+        movedrug.setVisible(false);
+        movedrug1.setVisible(false);
+        
+        checkplace.setVisible(false);
+        editprice.setVisible(false);
+        renew_validate.setVisible(false);
+        expired1.setVisible(false);
+        almost.setVisible(false);
+        
+        buydrug.setVisible(false);
+        updatedeals.setVisible(false);
+        alldeals.setVisible(false);
+        
+        salesbill.setVisible(false);
+        shiftsales.setVisible(false);
+        retdrug.setVisible(false);
+        
+        newcom.setVisible(false);
+        endwith.setVisible(false);
+        update.setVisible(false);
+        
+        logindetails.setVisible(false);
+        changepass.setVisible(false);
+        logout.setVisible(false);
+    }
+    private void uservis(){
+        adduser.setVisible(true);
+        deleteuser.setVisible(true);
+        updateuser.setVisible(true);
+        
+    }
+    private void enteruser(){
+        userB.setEnabled(false);
+        drugs.setEnabled(true);
+        drugdetails.setEnabled(true);
+        sales.setEnabled(true);
+        purchase.setEnabled(true);
+        setting.setEnabled(true);
+        company.setEnabled(true);
+        
+        adduser.setVisible(true);
+        deleteuser.setVisible(true);
+        updateuser.setVisible(true);
+        
+        adddrug.setVisible(false);
+        deletedrug.setVisible(false);
+        updatedrug.setVisible(false);
+        searchdrug.setVisible(false);
+        movedrug.setVisible(false);
+        movedrug1.setVisible(false);
+        
+        editprice.setVisible(false);
+        checkplace.setVisible(false);
+        renew_validate.setVisible(false);
+        expired1.setVisible(false);
+        almost.setVisible(false);
+        
+        buydrug.setVisible(false);
+        updatedeals.setVisible(false);
+        alldeals.setVisible(false);
+        
+        salesbill.setVisible(false);
+        shiftsales.setVisible(false);
+        retdrug.setVisible(false);
+        
+        newcom.setVisible(false);
+        endwith.setVisible(false);
+        update.setVisible(false);
+        
+        logindetails.setVisible(false);
+        changepass.setVisible(false);
+        logout.setVisible(false);
+    }
+    private void enterdrugs(){
+        drugs.setEnabled(false);
+        userB.setEnabled(true);
+        drugdetails.setEnabled(true);
+        sales.setEnabled(true);
+        purchase.setEnabled(true);
+        setting.setEnabled(true);
+        company.setEnabled(true);
+        
+        adduser.setVisible(false);
+        deleteuser.setVisible(false);
+        updateuser.setVisible(false);
+        
+        adddrug.setVisible(true);
+        deletedrug.setVisible(true);
+        updatedrug.setVisible(true);
+        searchdrug.setVisible(true);
+        movedrug.setVisible(true);
+        movedrug1.setVisible(true);
+        
+        editprice.setVisible(false);
+        checkplace.setVisible(false);
+        renew_validate.setVisible(false);
+        expired1.setVisible(false);
+        almost.setVisible(false);
+        
+        buydrug.setVisible(false);
+        updatedeals.setVisible(false);
+        alldeals.setVisible(false);
+        
+        salesbill.setVisible(false);
+        shiftsales.setVisible(false);
+        retdrug.setVisible(false);
+        
+        newcom.setVisible(false);
+        endwith.setVisible(false);
+        update.setVisible(false);
+        
+        logindetails.setVisible(false);
+        changepass.setVisible(false);
+        logout.setVisible(false);
+    }
+    private void enterdrugdetails(){
+        drugdetails.setEnabled(false);
+        userB.setEnabled(true);
+        drugs.setEnabled(true);
+        sales.setEnabled(true);
+        purchase.setEnabled(true);
+        setting.setEnabled(true);
+        company.setEnabled(true);
+        
+        adduser.setVisible(false);
+        deleteuser.setVisible(false);
+        updateuser.setVisible(false);
+        
+        adddrug.setVisible(false);
+        deletedrug.setVisible(false);
+        updatedrug.setVisible(false);
+        searchdrug.setVisible(false);
+        movedrug.setVisible(false);
+        movedrug1.setVisible(false);
+        
+        editprice.setVisible(true);
+        checkplace.setVisible(true);
+        renew_validate.setVisible(true);
+        expired1.setVisible(true);
+        almost.setVisible(true);
+        
+        buydrug.setVisible(false);
+        updatedeals.setVisible(false);
+        alldeals.setVisible(false);
+        
+        salesbill.setVisible(false);
+        shiftsales.setVisible(false);
+        retdrug.setVisible(false);
+        
+        newcom.setVisible(false);
+        endwith.setVisible(false);
+        update.setVisible(false);
+        
+        logindetails.setVisible(false);
+        changepass.setVisible(false);
+        logout.setVisible(false);
+    }
+    private void enterpurchase(){
+        purchase.setEnabled(false);
+        userB.setEnabled(true);
+        drugs.setEnabled(true);
+        drugdetails.setEnabled(true);
+        sales.setEnabled(true);
+        setting.setEnabled(true);
+        company.setEnabled(true);
+        
+        adduser.setVisible(false);
+        deleteuser.setVisible(false);
+        updateuser.setVisible(false);
+        
+        adddrug.setVisible(false);
+        deletedrug.setVisible(false);
+        updatedrug.setVisible(false);
+        searchdrug.setVisible(false);
+        movedrug.setVisible(false);
+        movedrug1.setVisible(false);
+        
+        editprice.setVisible(false);
+        checkplace.setVisible(false);
+        renew_validate.setVisible(false);
+        expired1.setVisible(false);
+        almost.setVisible(false);
+        
+        buydrug.setVisible(true);
+        updatedeals.setVisible(true);
+        alldeals.setVisible(true);
+        
+        salesbill.setVisible(false);
+        shiftsales.setVisible(false);
+        retdrug.setVisible(false);
+        
+        newcom.setVisible(false);
+        endwith.setVisible(false);
+        update.setVisible(false);
+        
+        logindetails.setVisible(false);
+        changepass.setVisible(false);
+        logout.setVisible(false);
+    }
+    private void sales(){
+        sales.setEnabled(false);
+        userB.setEnabled(true);
+        drugs.setEnabled(true);
+        drugdetails.setEnabled(true);
+        purchase.setEnabled(true);
+        setting.setEnabled(true);
+        company.setEnabled(true);
+        
+        adduser.setVisible(false);
+        deleteuser.setVisible(false);
+        updateuser.setVisible(false);
+        
+        adddrug.setVisible(false);
+        deletedrug.setVisible(false);
+        updatedrug.setVisible(false);
+        searchdrug.setVisible(false);
+        movedrug.setVisible(false);
+        movedrug1.setVisible(false);
+        
+        editprice.setVisible(false);
+        checkplace.setVisible(false);
+        renew_validate.setVisible(false);
+        expired1.setVisible(false);
+        almost.setVisible(false);
+        
+        buydrug.setVisible(false);
+        updatedeals.setVisible(false);
+        alldeals.setVisible(false);
+        
+        salesbill.setVisible(true);
+        shiftsales.setVisible(true);
+        retdrug.setVisible(true);
+        
+        newcom.setVisible(false);
+        endwith.setVisible(false);
+        update.setVisible(false);
+        
+        logindetails.setVisible(false);
+        changepass.setVisible(false);
+        logout.setVisible(false);
+    }
+    private void setting(){
+        setting.setEnabled(false);
+        userB.setEnabled(true);
+        drugs.setEnabled(true);
+        drugdetails.setEnabled(true);
+        sales.setEnabled(true);
+        purchase.setEnabled(true);
+        company.setEnabled(true);
+        
+        adduser.setVisible(false);
+        deleteuser.setVisible(false);
+        updateuser.setVisible(false);
+        
+        adddrug.setVisible(false);
+        deletedrug.setVisible(false);
+        updatedrug.setVisible(false);
+        searchdrug.setVisible(false);
+        movedrug.setVisible(false);
+        movedrug1.setVisible(false);
+        
+        editprice.setVisible(false);
+        checkplace.setVisible(false);
+        renew_validate.setVisible(false);
+        expired1.setVisible(false);
+        almost.setVisible(false);
+        
+        buydrug.setVisible(false);
+        updatedeals.setVisible(false);
+        alldeals.setVisible(false);
+        
+        salesbill.setVisible(false);
+        shiftsales.setVisible(false);
+        retdrug.setVisible(false);
+        
+        newcom.setVisible(false);
+        endwith.setVisible(false);
+        update.setVisible(false);
+        
+        logindetails.setVisible(true);
+        changepass.setVisible(true);
+        logout.setVisible(true);
+    }
+    private void company(){
+        company.setEnabled(false);
+        userB.setEnabled(true);
+        drugs.setEnabled(true);
+        drugdetails.setEnabled(true);
+        sales.setEnabled(true);
+        purchase.setEnabled(true);
+        setting.setEnabled(true);
+        
+        adduser.setVisible(false);
+        deleteuser.setVisible(false);
+        updateuser.setVisible(false);
+        
+        adddrug.setVisible(false);
+        deletedrug.setVisible(false);
+        updatedrug.setVisible(false);
+        searchdrug.setVisible(false);
+        movedrug.setVisible(false);
+        movedrug1.setVisible(false);
+        
+        editprice.setVisible(false);
+        checkplace.setVisible(false);
+        renew_validate.setVisible(false);
+        expired1.setVisible(false);
+        almost.setVisible(false);
+        
+        buydrug.setVisible(false);
+        updatedeals.setVisible(false);
+        alldeals.setVisible(false);
+        
+        salesbill.setVisible(false);
+        shiftsales.setVisible(false);
+        retdrug.setVisible(false);
+        
+        newcom.setVisible(true);
+        endwith.setVisible(true);
+        update.setVisible(true);
+        
+        logindetails.setVisible(false);
+        changepass.setVisible(false);
+        logout.setVisible(false);
+    }
+    private void loginas(){
+        String sql = "select ID,NAME from users where ID='"+Login.id.getText()+"' ";
+        try{
+            pre=con.prepareStatement(sql);
+            res=pre.executeQuery();
+            if(res.next()){
+                username1.setText(res.getString("NAME"));
+                if(res.getString("ID").equals("1")){
+                    username.setText("Admin");
+                }else{
+                    username.setText("Employee");
+                }
+            }
         }catch(Exception e){
-         JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
-     }}
- private void login_as(){
-     Date d = new Date();
-     SimpleDateFormat dd = new SimpleDateFormat("hh:mm:ss");
-     String sql = "insert into login (NAME,TYPE,DATE,TIME) values ('"+username1.getText()+"' ,'"+username.getText()+"' ,'"+today.getText()+"' ,'"+dd.format(d)+"' )";
-     try {
-         pre=con.prepareStatement(sql);
-         pre.execute();
-     } catch (Exception e){
-         JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
-     }}
- 
- private void alert_message(){
-     String sql = "select MESSAGE_TO,MESSAGE_FROM,MESSAGE_TEXT from message_history where MESSAGE_TO='"+username1.getText()+"' ";
-     try{
-      pre=con.prepareStatement(sql);
-      res=pre.executeQuery();
-      if(res.next()){
-      to=res.getString("MESSAGE_TO");
-      from=res.getString("MESSAGE_FROM");
-      text=res.getString("MESSAGE_TEXT");
-      new Alert().setVisible(true);  
-      }
-     }catch(Exception e){
-  JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);       
-     }}	
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
+        }
+    }
+    private void warning(){
+        //check the Expiration of the drugs;
+        
+        int ex_year ;
+        int current_year ;
+        int ex_month ;
+        int ex_day ;
+        int current_month ;
+        int current_day ;
+        String sql = "select BARCODE,EXPIRATION_DATE from drugs";
+        try{
+            pre=con.prepareStatement(sql);
+            res=pre.executeQuery();
+            while(res.next()){
+                Warning warning = new Warning();
+                ex_year = Integer.parseInt(res.getString("EXPIRATION_DATE").split("-")[2]);
+                ex_month = Integer.parseInt(res.getString("EXPIRATION_DATE").split("-")[1]);
+                ex_day = Integer.parseInt(res.getString("EXPIRATION_DATE").split("-")[0]);
+                current_year = Integer.parseInt(dd.format(d).split("-")[2]);
+                current_month = Integer.parseInt(dd.format(d).split("-")[1]);
+                current_day = Integer.parseInt(dd.format(d).split("-")[0]);
+                if(ex_year==current_year){
+                    if(ex_month-current_month==2){
+                        ex=1;
+                        almost_expired_bar = res.getString("BARCODE");
+                        warning.setVisible(true);
+                    }else if(ex_month==current_month){
+                        if(ex_day==current_day){
+                            ex=0;
+                            expired_bar = res.getString("BARCODE");
+                            update_to_expired();
+                            warning.setVisible(true);
+                        }
+                    }
+                }
+                
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
+            }
+    }
+    private void update_to_expired(){
+        String sql = "update drugs set EXPIRY='Expired' where BARCODE='"+expired_bar+"' ";
+        try{
+            pre=con.prepareStatement(sql);
+            pre.execute();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
+        }
+    }
+    private void login_as(){
+        Date d = new Date();
+        SimpleDateFormat dd = new SimpleDateFormat("hh:mm:ss");
+        String sql = "insert into login (NAME,TYPE,DATE,TIME) values ('"+username1.getText()+"' ,'"+username.getText()+"' ,'"+today.getText()+"' ,'"+dd.format(d)+"' )";
+        try {
+            pre=con.prepareStatement(sql);
+            pre.execute();
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
+        }
+    }
+    
+    private void alert_message(){
+        String sql = "select MESSAGE_TO,MESSAGE_FROM,MESSAGE_TEXT from message_history where MESSAGE_TO='"+username1.getText()+"' ";
+        try{
+            pre=con.prepareStatement(sql);
+            res=pre.executeQuery();
+            if(res.next()){
+                to=res.getString("MESSAGE_TO");
+                from=res.getString("MESSAGE_FROM");
+                text=res.getString("MESSAGE_TEXT");
+                msgAlertDialog.setVisible(true);
+            }else{
+                msgAlertDialog.setVisible(false);
+            }
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
+        }
+    }
+    
+    private void deleteMsg(){
+        String sql = "delete from message_history";
+        try {
+            pre=con.prepareStatement(sql);
+            pre.execute();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
+        }
+    }
 }
