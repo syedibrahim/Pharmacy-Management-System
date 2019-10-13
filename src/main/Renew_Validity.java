@@ -298,6 +298,7 @@ this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void barcodeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_barcodeKeyReleased
+    //sql query written to retrieve barcode and expiry status of barcode input
 String sql = "select BARCODE,EXPIRY from drugs where BARCODE='"+barcode.getText()+"'";
 try{
     pre=con.prepareStatement(sql);
@@ -404,7 +405,7 @@ try {
          JOptionPane.showMessageDialog(null,"This drug is not Expired","Wrong Operation",2);
          }
      }else {
-    JOptionPane.showMessageDialog(null,"There is no drugs such that barcode","Wrong Operation",2);
+    JOptionPane.showMessageDialog(null,"There is no matching drugs with that barcode","Wrong Operation",2);
      }
 } catch (Exception e) {
 JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);   
