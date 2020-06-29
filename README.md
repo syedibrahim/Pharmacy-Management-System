@@ -162,7 +162,9 @@ By using xampp server these database commands are easily initiated into the data
 
 
 
-
+**Login Information** <br>
+ `id :1`<br>
+ `password: admin ` <br>
 
 
 
