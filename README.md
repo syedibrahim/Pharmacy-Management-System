@@ -1,10 +1,12 @@
 # **Pharmacy-Management-System**
 
 **How to run the Project:**
-1. Install Eclipse J2EE or any other IDE of your choice.
-2. Use WAMP or XAMPP or any server of your choice.
-3. First create the MySql database on WAMP server using the sql file in the repo
-4. And then build and run the project from the IDE. 
+1. Clone this repo using 
+   - `git clone https://github.com/syedibrahim/Pharmacy-Management-System.git`
+2. Install Eclipse J2EE or any other IDE of your choice.
+3. Use WAMP or XAMPP or any server of your choice.
+4. First create the MySql database on WAMP server using the sql file in the repo
+5. And then build and run the project from the IDE. 
 
 **Login Information** <br>
  ```
